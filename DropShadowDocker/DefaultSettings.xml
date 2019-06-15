@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<App>
+  <Options>
+    <BlendMode>Multiply</BlendMode>
+    <Color>CMYK255,USER,0,0,0,255,100,cccd19cb-4675-4a5e-8bda-d0bbbaab8af0</Color>
+    <Opacity>80</Opacity>
+    <Angle>0</Angle>
+    <Distance>2</Distance>
+    <Size>0</Size>
+    <Feather>8</Feather>
+    <DPI>150</DPI>
+    <UseDocumentDPI>1</UseDocumentDPI>
+    <GroupShadowWithParent>0</GroupShadowWithParent>
+    <ShadowOverPrint>0</ShadowOverPrint>
+    <BitmapToPowerClip>0</BitmapToPowerClip>
+    <InnerShadow>0</InnerShadow>
+    <exOptions>0</exOptions>
+    <exPresets>0</exPresets>
+    <exHelp>1</exHelp>
+  </Options>
+  <Presets>
+    <Preset Name="Simple black shadow" Value="Multiply|CMYK,USER,0,0,0,100,100,00000000-0000-0000-0000-000000000000|48|308|6|1|24|150|1|0|0|0|0" />
+    <Preset Name="White glow" Value="Add|CMYK255,USER,0,0,0,0,100,cccd19cb-4675-4a5e-8bda-d0bbbaab8af0|100|0|0|2|40|150|1|0|0|0|0" />
+    <Preset Name="Simple inner black shadow" Value="Multiply|CMYK255,USER,0,0,0,255,100,cccd19cb-4675-4a5e-8bda-d0bbbaab8af0|61|0|0|3|14|300|1|0|0|0|1" />
+    <Preset Name="Simple inner white glow" Value="Add|CMYK255,USER,0,0,0,0,100,cccd19cb-4675-4a5e-8bda-d0bbbaab8af0|100|0|0|3|20|150|1|0|0|0|1" />
+  </Presets>
+  <Languages>
+    <lang Name="Русский" Id="1049" />
+    <lang Name="Türkçe" Id="1055" />
+  </Languages>
+</App>

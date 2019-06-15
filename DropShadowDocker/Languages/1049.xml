@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Russian 1049 -->
+<Lang>
+  <BlendMode>Режим:</BlendMode>
+  <ConvertToRGB>Преобразовать в RGB</ConvertToRGB>
+  <ConvertToCMYK>Преобразовать в CMYK</ConvertToCMYK>
+  <ConvertToGRAY>Преобразовать в оттенки серого</ConvertToGRAY>
+  <Opacity>Непрозрач.:</Opacity>
+  <Angle>Угол:</Angle>
+  <Distance>Дистанция:</Distance>
+  <Size>Размер:</Size>
+  <Feather>Размытие:</Feather>
+  <Options>Дополнительные настройки</Options>
+  <dpi>DPI:</dpi>
+  <useDPI>DPI документа</useDPI>
+  <Group>Группировать тень с объектом</Group>
+  <OverPrint>Оверпринт тени</OverPrint>
+  <BitmapToPowerClip>Изображение в PowerClip</BitmapToPowerClip>
+  <InnerShadow>Внутренняя тень</InnerShadow>
+  <Presets>Пресеты</Presets>
+  <SavePreset>Сохранить текущие настройки в выделенный пресет</SavePreset>
+  <DeletePreset>Удалить выбраный пресет</DeletePreset>
+  <CreateButton>Создать</CreateButton>
+  <InputMessage>Название пресета:</InputMessage>
+  <OKButton>OK</OKButton>
+  <CancelButton>Отмена</CancelButton>
+  <Help>Справка</Help>
+  <HelpTip>Наведите курсор мыши на элемент управления для получения справки о нём.</HelpTip>
+  <cbMode>Выбор режима наложения тени.</cbMode>
+  <ShadowColor>Выбор цвета тени. Клик правой кнопкой мыши вызовет контекстное меню, в котором можно быстро преобразовать цвет в другую цветовую модель.</ShadowColor>
+  <sOpacity>Настройка процента непрозрачности тени.</sOpacity>
+  <sDistance>Настройка дистанции от объекта, на которой будет создана тень.</sDistance>
+  <sFeather>Настройка размытия краёв тени.</sFeather>
+  <PresetsList>Для загрузки приесета необходимо дважды кликнуть на нём.</PresetsList>
+  <loadBtn>Загрузка настроек из созданой ранее тени.</loadBtn>
+  <AddBtn>Сохранить текущие настройки в новый пресет.</AddBtn>
+  <AboutBtn>Показать окно "О программе".</AboutBtn>
+  <LangBtn>Изменить язык интерфейса.</LangBtn>
+  <UndoBtn>Отменить последнее действие.</UndoBtn>
+  <CreateBtn>Создать новую тень для выбранных объектов.</CreateBtn>
+</Lang>

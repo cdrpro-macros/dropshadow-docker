@@ -1,0 +1,276 @@
+﻿<UserControl x:Class="DropShadow.Docker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="320" d:DesignWidth="220" MinWidth="220">
+    <UserControl.Resources>
+        <XmlDataProvider x:Key="Lang" XPath="Lang" />
+        <Style x:Key="ListBoxStyle1" TargetType="{x:Type ListBox}">
+            <Style.Resources>
+                <SolidColorBrush x:Key="ListBorder" Color="#828790"/>
+            </Style.Resources>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ListBorder}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBox}">
+                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="1" SnapsToDevicePixels="true">
+                            <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}">
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Border Name="itm" Background="Transparent" Height="16" Padding="0" Margin="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="16" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="32" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Height="16" Width="16" Source="/DropShadow;component/Images/preset.png" SnapsToDevicePixels="True" />
+                                <TextBlock Text="{Binding Path=name}" TextWrapping="Wrap" Grid.Column="1"
+                                	VerticalAlignment="Top" HorizontalAlignment="Left" Margin="2,0,0,0" Foreground="#000000" FontSize="10"/>
+                                <StackPanel Name="btns" Orientation="Horizontal" Grid.Column="2" Visibility="Hidden">
+                                    <Button Name="SavePreset" ToolTip="{Binding Source={StaticResource Lang}, XPath=SavePreset}" Height="16" Width="16" Padding="0" Click="SavePreset_Click">
+                                        <Image Height="12" Width="12" Source="/DropShadow;component/Images/save_12x12.png" SnapsToDevicePixels="True" />
+                                    </Button>
+                                    <Button Name="DeletePreset" ToolTip="{Binding Source={StaticResource Lang}, XPath=DeletePreset}" Height="16" Width="16" Padding="0" Click="DeletePreset_Click">
+                                        <Image Height="12" Width="12" Source="/DropShadow;component/Images/delete_12x12.png" SnapsToDevicePixels="True" />
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}" Value="True">
+                                <Setter Property="Visibility" TargetName="btns" Value="Visible" />
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="CustomThumbForSlider" TargetType="{x:Type Thumb}">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Ellipse Stroke="#FF666666" Width="10" Height="10" Cursor="SizeWE">
+                            <Ellipse.Fill>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFB8B8B8" Offset="1"/>
+                                    <GradientStop Color="White" Offset="0"/>
+                                </LinearGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="myCustomSlider" TargetType="{x:Type Slider}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Slider}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Border x:Name="TrackBackground" BorderThickness="1" CornerRadius="1" Margin="5,0" VerticalAlignment="Center" Height="4.0" Grid.Row="1">
+                                    <Canvas>
+                                        <Canvas.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FF666666" Offset="0"/>
+                                                <GradientStop Color="White" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Canvas.Background>
+                                    </Canvas>
+                                </Border>
+                                <Track x:Name="PART_Track" Grid.Row="1">
+                                    <Track.Thumb>
+                                        <Thumb x:Name="Thumb" Style="{StaticResource CustomThumbForSlider}" Background="Black" Width="10" Height="10" />
+                                    </Track.Thumb>
+                                </Track>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid Margin="0,10,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="gOptions" Background="Transparent" VerticalAlignment="Top" Grid.Row="0">
+            <TextBlock x:Name="lBlendMode" Text="{Binding Source={StaticResource Lang}, XPath=BlendMode}" VerticalAlignment="Top" HorizontalAlignment="Left"
+				Margin="0,2,0,0" FontSize="10" TextAlignment="Right" Width="58" />
+            <ComboBox x:Name="cbMode" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110"
+				Margin="64,0,0,0" FontSize="10" MouseMove="Help_MouseMove" SelectionChanged="cb_SelectionChanged" />
+            <Border x:Name="ShadowColor" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="180,0,0,0" Cursor="Hand" MouseMove="Help_MouseMove"
+                Width="28" Height="20" Background="Black" BorderBrush="Gray" BorderThickness="1" MouseLeftButtonUp="ShadowColor_MouseLeftButtonUp">
+                <Border.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Name="toRGB" Header="{Binding Source={StaticResource Lang}, XPath=ConvertToRGB}" Click="menuConvertColorTo">
+                            <MenuItem.Icon>
+                                <Image Source="/DropShadow;component/Images/rgb_16x16.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Name="toCMYK" Header="{Binding Source={StaticResource Lang}, XPath=ConvertToCMYK}" Click="menuConvertColorTo">
+                            <MenuItem.Icon>
+                                <Image Source="/DropShadow;component/Images/cmyk_16x16.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Name="toGRAY" Header="{Binding Source={StaticResource Lang}, XPath=ConvertToGRAY}" Click="menuConvertColorTo">
+                            <MenuItem.Icon>
+                                <Image Source="/DropShadow;component/Images/gray_16x16.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </Border.ContextMenu>
+            </Border>
+            <TextBlock x:Name="lOpacity" Text="{Binding Source={StaticResource Lang}, XPath=Opacity}" VerticalAlignment="Top" HorizontalAlignment="Left"
+				Margin="0,30,0,0" FontSize="10" TextAlignment="Right" Width="58" />
+            <Slider x:Name="sOpacity" HorizontalAlignment="Stretch" Margin="64,34,54,0" VerticalAlignment="Top"
+				Style="{StaticResource myCustomSlider}" Minimum="0" Maximum="100"
+				MouseMove="Help_MouseMove" ValueChanged="Slider_ValueChanged" PreviewMouseUp="Slider_PreviewMouseUp" />
+            <TextBox x:Name="tbOpacity" VerticalAlignment="Top" HorizontalAlignment="Right" 
+				Margin="0,30,12,0" Width="35" Height="20" FontSize="10" TextChanged="ChangeSlider" KeyUp="SliderTextBox_KeyUp" />
+            <TextBlock Text="%" VerticalAlignment="Top" HorizontalAlignment="Right"
+				Margin="0,32,2,0" FontSize="10" />
+            <TextBlock x:Name="lAngle" Text="{Binding Source={StaticResource Lang}, XPath=Angle}" VerticalAlignment="Top" HorizontalAlignment="Left"
+				Margin="0,62,0,0" FontSize="10" TextAlignment="Right" Width="58" />
+            <Grid x:Name="ang" Margin="64,54,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"
+				MouseLeftButtonDown="Ang_MouseLeftButtonDown" HorizontalAlignment="Left" Width="35" Height="35">
+                <Ellipse Stroke="#FF666666" >
+                    <Ellipse.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#C4C4C4" Offset="1"/>
+                            <GradientStop Color="White"/>
+                        </RadialGradientBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Rectangle Margin="0,0,2,0" HorizontalAlignment="Right" Width="15" Fill="#FF3B3B3B" VerticalAlignment="Center" Height="1"/>
+            </Grid>
+            <TextBox x:Name="tbAngle" VerticalAlignment="Top" Margin="108,62,0,0" HorizontalAlignment="Left"
+				Width="40" Height="20" FontSize="10" TextChanged="tbAngle_TextChanged" />
+            <TextBlock Text="°" VerticalAlignment="Top" HorizontalAlignment="Left"
+				Margin="152,60,0,0" FontSize="14" />
+            <!-- Distance -->
+            <TextBlock x:Name="lDistance" Text="{Binding Source={StaticResource Lang}, XPath=Distance}" VerticalAlignment="Top" HorizontalAlignment="Left"
+				Margin="0,100,0,0" FontSize="10" TextAlignment="Right" Width="58" />
+            <Slider x:Name="sDistance" HorizontalAlignment="Stretch" Margin="64,104,54,0" VerticalAlignment="Top"
+				Style="{StaticResource myCustomSlider}" Minimum="0" Maximum="20"
+				MouseMove="Help_MouseMove" ValueChanged="Slider_ValueChanged" PreviewMouseUp="Slider_PreviewMouseUp" />
+            <TextBox x:Name="tbDistance" VerticalAlignment="Top" HorizontalAlignment="Right" 
+				Margin="0,100,12,0" Width="35" Height="20" FontSize="10" TextChanged="ChangeSlider" KeyUp="SliderTextBox_KeyUp" />
+            <!-- Size -->
+            <TextBlock x:Name="lSize" Text="{Binding Source={StaticResource Lang}, XPath=Size}" VerticalAlignment="Top" HorizontalAlignment="Left"
+				Margin="0,122,0,0" FontSize="10" TextAlignment="Right" Width="58" />
+            <Slider x:Name="sSize" HorizontalAlignment="Stretch" Margin="64,126,54,0" VerticalAlignment="Top"
+				Style="{StaticResource myCustomSlider}" Minimum="0" Maximum="20"
+				ValueChanged="Slider_ValueChanged" PreviewMouseUp="Slider_PreviewMouseUp" />
+            <TextBox x:Name="tbSize" VerticalAlignment="Top" HorizontalAlignment="Right" 
+				Margin="0,122,12,0" Width="35" Height="20" FontSize="10" TextChanged="ChangeSlider" KeyUp="SliderTextBox_KeyUp" />
+            <!-- Feather -->
+            <TextBlock x:Name="lFeather" Text="{Binding Source={StaticResource Lang}, XPath=Feather}" VerticalAlignment="Top" HorizontalAlignment="Left"
+				Margin="0,144,0,0" FontSize="10" TextAlignment="Right" Width="58" />
+            <Slider x:Name="sFeather" HorizontalAlignment="Stretch" Margin="64,148,54,0" VerticalAlignment="Top"
+				Style="{StaticResource myCustomSlider}" Minimum="0" Maximum="20"
+				MouseMove="Help_MouseMove" ValueChanged="Slider_ValueChanged" PreviewMouseUp="Slider_PreviewMouseUp" />
+            <TextBox x:Name="tbFeather" VerticalAlignment="Top" HorizontalAlignment="Right" 
+				Margin="0,144,12,0" Width="35" Height="20" FontSize="10" TextChanged="ChangeSlider" KeyUp="SliderTextBox_KeyUp" />
+            <Expander x:Name="exOptions" Header="{Binding Source={StaticResource Lang}, XPath=Options}" VerticalAlignment="Top" Margin="0,176,0,0"
+                      Collapsed="Expander_Collapsed" Expanded="Expander_Expanded">
+                <Grid Height="Auto" Margin="0,0,0,20" >
+                    <TextBlock Text="{Binding Source={StaticResource Lang}, XPath=dpi}" VerticalAlignment="Top" HorizontalAlignment="Left"
+				        Margin="10,13,0,0" FontSize="10" />
+                    <TextBox x:Name="tbDPI" VerticalAlignment="Top" HorizontalAlignment="Left" 
+				        Margin="34,10,0,0" Width="35" Height="20" FontSize="10" KeyUp="tbDPI_KeyUp" />
+                    <CheckBox x:Name="cbDPI" Content="{Binding Source={StaticResource Lang}, XPath=useDPI}" VerticalAlignment="Top" HorizontalAlignment="Left"
+                        Margin="80,12,0,0" FontSize="10" Checked="cb_Checked" Unchecked="cb_Unchecked" />
+                    <CheckBox x:Name="cbGroup" Content="{Binding Source={StaticResource Lang}, XPath=Group}" VerticalAlignment="Top" HorizontalAlignment="Left"
+                        Margin="10,40,0,0" FontSize="10" Checked="cb_Checked" Unchecked="cb_Unchecked" />
+                    <CheckBox x:Name="cbOverPrint" Content="{Binding Source={StaticResource Lang}, XPath=OverPrint}" VerticalAlignment="Top" HorizontalAlignment="Left"
+                        Margin="10,60,0,0" FontSize="10" Checked="cb_Checked" Unchecked="cb_Unchecked" />
+                    <CheckBox x:Name="cbBitmapToPowerClip" Content="{Binding Source={StaticResource Lang}, XPath=BitmapToPowerClip}" VerticalAlignment="Top" HorizontalAlignment="Left"
+                        Margin="10,80,0,0" FontSize="10" Checked="cb_Checked" Unchecked="cb_Unchecked" />
+                    <CheckBox x:Name="cbInnerShadow" Content="{Binding Source={StaticResource Lang}, XPath=InnerShadow}" VerticalAlignment="Top" HorizontalAlignment="Left"
+                        Margin="10,100,0,0" FontSize="10" Checked="cb_Checked" Unchecked="cb_Unchecked" />
+                </Grid>
+            </Expander>
+        </Grid>
+        <Expander x:Name="exPresets" Header="{Binding Source={StaticResource Lang}, XPath=Presets}" VerticalAlignment="Top" Grid.Row="1" Margin="0,4,0,0"
+            Collapsed="Expander_Collapsed" Expanded="Expander_Expanded">
+            <Grid>
+                <ListBox x:Name="PresetsList" Height="140" Margin="0,6,0,0" ItemsSource="{Binding}"
+                    Style="{DynamicResource ListBoxStyle1}" HorizontalContentAlignment="Stretch" MouseMove="Help_MouseMove" MouseDoubleClick="PresetsList_MouseDoubleClick" />
+            </Grid>
+        </Expander>
+        <Expander x:Name="exHelp" Header="{Binding Source={StaticResource Lang}, XPath=Help}" VerticalAlignment="Top" Grid.Row="2" Margin="0,4,0,0"
+            Collapsed="Expander_Collapsed" Expanded="Expander_Expanded">
+            <Grid Height="Auto">
+                <TextBlock x:Name="tbHelp" MinHeight="40" Text="{Binding Source={StaticResource Lang}, XPath=HelpTip}" Margin="0,10,0,0" TextWrapping="Wrap" FontSize="10" Foreground="#666666" />
+            </Grid>
+        </Expander>
+        <Grid x:Name="gBottons" VerticalAlignment="Top" Margin="0,10,0,0" Grid.Row="3">
+            <Rectangle VerticalAlignment="Top" Margin="0,2,0,0" Height="1" SnapsToDevicePixels="True">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Grid Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"  />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,10,0,0" Grid.Column="0">
+                    <Button Name="loadBtn" Height="20" Width="20" Margin="0,0,2,0" Padding="0" MouseMove="Help_MouseMove" Click="loadBtn_Click">
+                        <Image Height="16" Width="16" Source="/DropShadow;component/Images/preset_load_16x16.png" SnapsToDevicePixels="True" />
+                    </Button>
+                    <Button Name="AddBtn" Height="20" Width="20" Margin="0,0,6,0" Padding="0" MouseMove="Help_MouseMove" Click="AddBtn_Click">
+                        <Image Height="16" Width="16" Source="/DropShadow;component/Images/preset_add_16x16.png" SnapsToDevicePixels="True" />
+                    </Button>
+                    <Button Name="AboutBtn" Height="20" Width="20" Margin="0,0,2,0" Padding="0" MouseMove="Help_MouseMove" Click="AboutBtn_Click">
+                        <Image Height="16" Width="16" Source="/DropShadow;component/Images/about.png" SnapsToDevicePixels="True" />
+                    </Button>
+                    <Button Name="LangBtn" Height="20" Width="20" Margin="0,0,2,0" Padding="0" MouseMove="Help_MouseMove" Click="LangBtn_Click" >
+                        <Image Height="16" Width="16" Source="Images/language.png" SnapsToDevicePixels="True" />
+                        <Button.ContextMenu>
+                            <ContextMenu x:Name = "LangMenu">
+                                <MenuItem Header="Default (English)" Tag="Default" Click="ChangeLang" />
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,10,0,0" Grid.Column="1">
+                    <Button Name="UndoBtn" Height="20" Width="20" Margin="0,0,3,0" Padding="0" MouseMove="Help_MouseMove" Click="UndoBtn_Click">
+                        <Image Height="16" Width="16" Source="/DropShadow;component/Images/undo_16x16.png" SnapsToDevicePixels="True" />
+                    </Button>
+                    <Button Content="{Binding Source={StaticResource Lang}, XPath=CreateButton}" Margin="0" Name="CreateBtn" Padding="8,0" Height="20" 
+                            FontSize="10" FontWeight="Bold" MouseMove="Help_MouseMove" Click="CreateBtn_Click" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

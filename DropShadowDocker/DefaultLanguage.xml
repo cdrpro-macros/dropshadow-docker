@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Lang>
+  <BlendMode>Blend Mode:</BlendMode>
+  <ConvertToRGB>Convert to RGB</ConvertToRGB>
+  <ConvertToCMYK>Convert to CMYK</ConvertToCMYK>
+  <ConvertToGRAY>Convert to Gray</ConvertToGRAY>
+  <Opacity>Opacity:</Opacity>
+  <Angle>Angle:</Angle>
+  <Distance>Distance:</Distance>
+  <Size>Size:</Size>
+  <Feather>Feather:</Feather>
+  <Options>More Options</Options>
+  <dpi>DPI:</dpi>
+  <useDPI>Use Document DPI</useDPI>
+  <Group>Group Shadow with Parent Shape</Group>
+  <OverPrint>Overprint Shadow</OverPrint>
+  <BitmapToPowerClip>Bitmap to PowerClip</BitmapToPowerClip>
+  <InnerShadow>Inner Shadow</InnerShadow>
+  <Presets>Presets</Presets>
+  <SavePreset>Save current settings to selected preset</SavePreset>
+  <DeletePreset>Delete selected preset</DeletePreset>
+  <CreateButton>Create</CreateButton>
+  <InputMessage>New preset name:</InputMessage>
+  <OKButton>OK</OKButton>
+  <CancelButton>Cancel</CancelButton>
+  <Help>Help</Help>
+  <HelpTip>Move mouse on any control for help.</HelpTip>
+  <cbMode>Choose how the color of the shadow blends with the color of the underlying object.</cbMode>
+  <ShadowColor>Click left mouse button to choose the drop shadow color. Click right mouse button to convert the color to another model.</ShadowColor>
+  <sOpacity>Adjust the transparency of the drop shadow.</sOpacity>
+  <sDistance>Set the distance between the drop shadow and an object.</sDistance>
+  <sFeather>Sharpen or soften the edges of the drop shadow.</sFeather>
+  <PresetsList>Double click on a preset item to load drop shadow settings.</PresetsList>
+  <loadBtn>Load settings from drop shadow object.</loadBtn>
+  <AddBtn>Save current settings as new preset.</AddBtn>
+  <AboutBtn>Show about dialog</AboutBtn>
+  <LangBtn>Change UI language.</LangBtn>
+  <UndoBtn>Undo create</UndoBtn>
+  <CreateBtn>Create a new drop shadow for selected objects.</CreateBtn>
+</Lang>

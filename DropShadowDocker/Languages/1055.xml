@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Turkish -->
+<Lang>
+  <BlendMode>Mod:</BlendMode>
+  <ConvertToRGB>RGB'ye Çevir</ConvertToRGB>
+  <ConvertToCMYK>CMYK'ya Çevir</ConvertToCMYK>
+  <ConvertToGRAY>Grayscale'e Çevir</ConvertToGRAY>
+  <Opacity>Şeffaflık:</Opacity>
+  <Angle>Açı:</Angle>
+  <Distance>Mesafe:</Distance>
+  <Size>Boyut:</Size>
+  <Feather>Yumuşaklık:</Feather>
+  <Options>Diğer Seçenekler</Options>
+  <dpi>DPI:</dpi>
+  <useDPI>Belgenin DPI değerini kullan</useDPI>
+  <Group>Gölgeyi nesneyle grupla</Group>
+  <OverPrint>Gölgeye Overprint ver</OverPrint>
+  <BitmapToPowerClip>Bitmap'i PowerClip yap</BitmapToPowerClip>
+  <InnerShadow>İç Gölge</InnerShadow>
+  <Presets>Hazır Ayarlar</Presets>
+  <SavePreset>Şimdiki ayarları aazır ayarlara kaydet</SavePreset>
+  <DeletePreset>Seçilen aazır ayarı sil</DeletePreset>
+  <CreateButton>Oluştur</CreateButton>
+  <InputMessage>Yeni hazır ayar adı:</InputMessage>
+  <OKButton>Tamam</OKButton>
+  <CancelButton>Vazgeç</CancelButton>
+  <Help>Yardım</Help>
+  <HelpTip>Yardım için fare imlecini herhangi bir yere sürükleyin.</HelpTip>
+  <cbMode>Gölge renginin altındaki nesneye göre nasıl harmanlanacağını belirler.</cbMode>
+  <ShadowColor>Gölge rengini belirlemek için sol tıklayın. Rengi farklı bir modele çevirmek için sağ tıklayın.</ShadowColor>
+  <sOpacity>Gölgenin şeffaflığını ayarlar.</sOpacity>
+  <sDistance>Nesne ile gölge arasındaki mesafeyi ayarlar.</sDistance>
+  <sFeather>Gölge yumuşaklığını ayarlar.</sFeather>
+  <PresetsList>Gölge ayarı yüklemek için hazır ayara çift tıklayın.</PresetsList>
+  <loadBtn>Ayarları gölgeden al.</loadBtn>
+  <AddBtn>Şimdiki ayarları yeni hazır ayar olarak kaydet.</AddBtn>
+  <AboutBtn>Hakkında</AboutBtn>
+  <LangBtn>Dili değiştir</LangBtn>
+  <UndoBtn>Geri al</UndoBtn>
+  <CreateBtn>Seçilmiş nesneden gölge oluştur.</CreateBtn>
+</Lang>
